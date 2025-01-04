@@ -43,6 +43,7 @@ export const QrReader = () => {
         }
 
         return () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             if (!videoRef.current) {
                 scanner?.current?.stop();
             }
