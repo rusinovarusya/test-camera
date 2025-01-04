@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://rusinovarusya.github.io/test-camera",
+  "homepage": "https://rusinovarusya.github.io/test-camera",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
