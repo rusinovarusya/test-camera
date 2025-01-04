@@ -44,7 +44,6 @@ video {
     position: absolute;
     top: 50%;
     left: 50%;
-    color: var(--black);
-    font: var(--font-base-600);
+    color: black;
     translate: -50% -50%;
 }
