@@ -1,7 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import QrScanner from 'qr-scanner';
 
 import cls from './QrReader.module.css';
+
+interface ICamera {
+    id: string;
+    label: string;
+}
 
 export const QrReader = () => {
     const scanner = useRef<QrScanner>();
@@ -10,6 +15,9 @@ export const QrReader = () => {
 
     const [qrOn, setQrOn] = useState<boolean>(true);
     const [scannedResult, setScannedResult] = useState<string | undefined>('');
+    // const [cameraList, setCameraList] = useState<string[]>([]);
+    // const [cameraList, setCameraList] = useState<unknown[]>([]);
+    const [cameraList, setCameraList] = useState<ICamera[]>([]);
 
     const onScanSuccess = (result: QrScanner.ScanResult) => {
         console.log(result);
@@ -60,6 +68,7 @@ export const QrReader = () => {
 
     useEffect(() => {
         QrScanner.listCameras().then((cameras) => console.log(cameras));
+        QrScanner.listCameras().then((cameras) => setCameraList(cameras));
     }, []);
     
     return (
@@ -69,6 +78,12 @@ export const QrReader = () => {
             <div ref={qrBoxRef} className={cls.qrBox}>
                 {!videoRef?.current && <img src="" alt="Qr Frame" className={cls.qrFrame} onError={onError} />}
             </div>
+            <div className={cls.list}>{cameraList.map((camera) => (
+                <Fragment key={camera.id}>
+                  <p className={cls.item}>{camera.id}</p>
+                  <p className={cls.item}>{camera.label}</p>
+                </Fragment>
+            ))}</div>
             {scannedResult && (
                 <>
                     <div className={cls.resultWrapper}></div>

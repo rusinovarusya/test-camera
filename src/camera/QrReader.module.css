@@ -47,3 +47,19 @@ video {
     color: black;
     translate: -50% -50%;
 }
+
+.list {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 10;
+    border: 2px solid darkred;
+}
+
+.item {
+    width: 100%;
+    font-size: small;
+    color: red;
+    border: 2px solid red;
+}
