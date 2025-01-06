@@ -80,7 +80,7 @@ export const QrReader = () => {
             </div>
             <div className={cls.list}>{cameraList.map((camera) => (
                 <Fragment key={camera.id}>
-                  <p className={cls.item}>{camera.id}</p>
+                  {/* <p className={cls.item}>{camera.id}</p> */}
                   <p className={cls.item}>{camera.label}</p>
                 </Fragment>
             ))}</div>
