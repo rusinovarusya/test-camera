@@ -70,6 +70,18 @@ export const QrReader = () => {
         QrScanner.listCameras().then((cameras) => console.log(cameras));
         QrScanner.listCameras().then((cameras) => setCameraList(cameras));
     }, []);
+
+    useEffect(() => {
+        QrScanner.listCameras(true).then((cameras) => {
+            if (cameras.length === 1) {
+                setCameraList(cameras);
+            } else {
+                const idList = cameras.filter((camera) => !camera.label.includes('front') || camera.label.includes('default'));
+                const qrScanner = new QrScanner(videoRef?.current, onScanSuccess, {});
+                qrScanner.setCamera(String(idList[0].id));
+            }
+        });
+    }, []);
     
     return (
         <div className={cls.qrReader}>
