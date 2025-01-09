@@ -42,6 +42,8 @@ export const QrReader = () => {
                 overlay: qrBoxRef?.current || undefined,
             });
 
+            scanner.current.setCamera('environment');
+
             // QrScanner.listCameras().then((cameras) => {
             //     if (cameras.length > 1) {
             //         const cameraId = cameras.filter((camera) => !camera.label.includes('front'))[0].id;
