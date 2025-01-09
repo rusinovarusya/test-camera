@@ -42,12 +42,12 @@ export const QrReader = () => {
                 overlay: qrBoxRef?.current || undefined,
             });
 
-            QrScanner.listCameras().then((cameras) => {
-                if (cameras.length > 1) {
-                    const cameraId = cameras.filter((camera) => !camera.label.includes('front'))[0].id;
-                    scanner?.current?.setCamera(cameraId);
-                }
-            })
+            // QrScanner.listCameras().then((cameras) => {
+            //     if (cameras.length > 1) {
+            //         const cameraId = cameras.filter((camera) => !camera.label.includes('front'))[0].id;
+            //         scanner?.current?.setCamera(cameraId);
+            //     }
+            // })
 
             scanner?.current
                 ?.start()
